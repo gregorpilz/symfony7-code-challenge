@@ -12,18 +12,17 @@ Ordio ist eine Plattform zur Verwaltung von Schichtplänen. Über die Shifts API
 
 ## Aufgabenstellung
 
-    1. Daten abrufen
+1. Daten abrufen
     •	Verwende die Shifts API von Ordio (https://public.ordio.com/api/doc), um eine Liste aller Schichten abzurufen.
+    • Eine Schicht enthält mehrere Candidates (Mitarbeiter), aber nur die mit Status 2 oder 3 sollen berücksichtigt werden.
+    • Stelle sicher, dass alle relevanten Daten für die Aggregation erfasst werden (z. B. Mitarbeiter-ID, Name, Schichtbeginn, Schichtende).
 
-• Eine Schicht enthält mehrere Candidates (Mitarbeiter), aber nur die mit Status 2 oder 3 sollen berücksichtigt werden.
-• Stelle sicher, dass alle relevanten Daten für die Aggregation erfasst werden (z. B. Mitarbeiter-ID, Name, Schichtbeginn, Schichtende).
-
-    2. Datenverarbeitung
+´2. Datenverarbeitung
     •	Aggregiere die Schichten pro Mitarbeiter.
     •	Berechne für jeden Mitarbeiter:
     •	Gesamtanzahl der Schichten
     •	Gesamte Arbeitszeit (in Stunden)
-    3. Ausgabeformat
+3. Ausgabeformat
     •	Die aggregierten Daten sollen in einem strukturierten Format ausgegeben werden, z. B.:
 
 {
