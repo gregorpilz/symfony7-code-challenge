@@ -17,7 +17,7 @@ Ordio ist eine Plattform zur Verwaltung von Schichtplänen. Über die Shifts API
     • Eine Schicht enthält mehrere Candidates (Mitarbeiter), aber nur die mit Status 2 oder 3 sollen berücksichtigt werden.
     • Stelle sicher, dass alle relevanten Daten für die Aggregation erfasst werden (z. B. Mitarbeiter-ID, Name, Schichtbeginn, Schichtende).
 
-´2. Datenverarbeitung
+2. Datenverarbeitung
     •	Aggregiere die Schichten pro Mitarbeiter.
     •	Berechne für jeden Mitarbeiter:
     •	Gesamtanzahl der Schichten
