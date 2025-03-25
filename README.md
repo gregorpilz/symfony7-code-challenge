@@ -1,88 +1,62 @@
-# Code Challenge - Symfony 7 Rest API
+# Coding Challenge: Mitarbeiter-Schichtaggregation mit der Ordio Shifts API
 
-This challenge requires you to create an API that will import data from a third party API and be able to display it.
-
-Building Symfony RESTful APIs using Symfony 7, Command, Service, validations, Serializer, DTO etc.
-
-## Features
-
-- Import some Data from a 3rd party data provider and save to the database. (cool list of public APIs: https://github.com/toddmotto/public-apis)
-- Display a list of short data from the database.
-- Select and display details of a single customer from the database.
+Hier ist eine Coding-Challenge-Beschreibung für die Nutzung der Shifts API von Ordio, um alle Schichten für die Mitarbeiter zu aggregieren:
 
 ## Requirements
 
 - PHP: ">=8.2"
 
-## Build
+## Hintergrund
 
-Clone github repository:
+Ordio ist eine Plattform zur Verwaltung von Schichtplänen. Über die Shifts API können Informationen zu geplanten Schichten abgerufen werden. Deine Aufgabe ist es, eine Anwendung oder ein Skript zu entwickeln, das alle Schichten für jeden Mitarbeiter aggregiert und eine übersichtliche Darstellung ausgibt.
 
-In your `.env` file, you need to configure `DATABASE_URL`.
+## Aufgabenstellung
 
-Install dependencies with composer:
+    1. Daten abrufen
+    •	Verwende die Shifts API von Ordio (https://public.ordio.com/api/doc), um eine Liste aller Schichten abzurufen.
 
-```
-composer install
-```
+• Eine Schicht enthält mehrere Candidates (Mitarbeiter), aber nur die mit Status 2 oder 3 sollen berücksichtigt werden.
+• Stelle sicher, dass alle relevanten Daten für die Aggregation erfasst werden (z. B. Mitarbeiter-ID, Name, Schichtbeginn, Schichtende).
 
-Create the database:
+    2. Datenverarbeitung
+    •	Aggregiere die Schichten pro Mitarbeiter.
+    •	Berechne für jeden Mitarbeiter:
+    •	Gesamtanzahl der Schichten
+    •	Gesamte Arbeitszeit (in Stunden)
+    3. Ausgabeformat
+    •	Die aggregierten Daten sollen in einem strukturierten Format ausgegeben werden, z. B.:
 
-```
-php bin/console doctrine:database:create
-```
+{
+"employees": [
+{
+"employee_id": 123,
+"name": "Max Mustermann",
+"total_shifts": 5,
+"total_hours": 40
+},
+{
+"employee_id": 456,
+"name": "Lisa Müller",
+"total_shifts": 3,
+"total_hours": 24
+}
+]
+}
 
-Run migrations:
+• Alternativ kann eine CSV- oder Tabellenformatierung genutzt werden.
 
-```
-php bin/console doctrine:migrations:migrate
-```
+4. Bonus (Optional)
+   • Erstelle eine einfache Webanwendung oder CLI-Anwendung zur Anzeige der aggregierten Schichtdaten.
+   • Ermögliche eine Filterung nach bestimmten Zeiträumen (z. B. letzte Woche, letzter Monat).
 
-Run Data Import Command
+## Bewertungskriterien
 
-```
-php bin/console app:import-api-data
-```
+    •	Funktionalität: Ruft das Skript korrekt die Schichtdaten ab und aggregiert sie richtig?
+    •	Code-Qualität: Ist der Code sauber, gut strukturiert und verständlich?
+    •	Fehlertoleranz: Geht das Skript robust mit API-Fehlern oder fehlenden Daten um?
+    •	Performance: Skaliert die Lösung auch bei vielen Mitarbeitern und Schichten?
 
-Run the application
+## Hinweise
 
-```
-symfony server:start
-```
-
-Have a check on a browser.
-
-```
-http://localhost:8000
-```
-
-## REST APIs
-
-Create 2 RESTful API endpoints with the following route definition:
-
-- GET /data
-
-  Retrieve the list of all data from the database with some parameters like limit, query.
-  The response should contain a short view of Entity:
-
-        name
-        creation_tz
-        ...
-
-- GET /data/{objectId}
-
-  Retrieve more details of a single Entity The response should contain a full detail of Entity
-
-## Test
-
-Create test database for unit test and application test.
-
-```
-php bin/console --env=test doctrine:database:create
-```
-
-Run Test cases
-
-```
-php bin/phpunit
-```
+    •	Die API-Dokumentation findest du unter: https://public.ordio.com/api/doc
+    •	Falls eine Authentifizierung erforderlich ist, nutze die entsprechenden API-Keys oder Tokens (Details in der API-Dokumentation).
